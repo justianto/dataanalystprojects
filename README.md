@@ -10,14 +10,14 @@ in the complex and big datasets.
 
 The projects featured in my portfolio illustrate my determination to learn and grow as a data analyst. They include:
 
-[SQL Project 1]: 
+## [SQL Project 1]: 
 - A complete steps for a database creation from scratch. 
 - Asking the right questions for defining business objectives and business problem. 
 - Business analysis through various business metrics by focusing on balancing revenue growth with profitability and encouraging customers for repetitive purchases
 - Analysis summary
 - An actionable insight conclusion
 
-[SQL Project 2]: 
+## [SQL Project 2]: 
 
 I am excited to share these projects as they illustrate my problem-solving skills, my ability to communicate complex ideas to both technical and non-technical audiences, and my proficiency in a range of data analysis tools 
 and programming languages, including SQL, Spreadsheets, Business Intelligence tools.
