@@ -1,0 +1,387 @@
+Scenario : Gadget Galaxy store is a small local smartphone store that sells variety of popular smartphones. It's located in the sub-urban of the capital city.
+The owner thinks that he had a good sales, however the profit is currently decreasing from it's own performance. He asked me to do a favor to analyze the monthly sales performance.
+So he can track all the business performance and gain the insight to help him to make a great decision in order to achieve business growth in the future. 
+
+
+Attritube information :
+
+
+1. order_id : unique values that recored every single purchase history
+2. order_date : purchase date the product has been sold
+3. customer_id : unique id given to every single customers
+4. product_id : unique values for every single products
+5. price : the end cost of selling in the store
+6. quantity : units products has been sold out
+7. first_name : customer first name
+8. last_name : customer last name
+9. age : customer age
+10. email : customer email adress
+11. product_name : the name of the product
+12. category : the category of it's product
+13. condition : the specific condition about the product
+14. storage : the maximum space memory capacity
+15. cost : the production price before into retail
+
+
+
+Project Stages & Specification :
+
+
+Project Stages 
+
+
+1. Define The Business Problem & Business Objectives : Discussing the critical business problem with stakeholders to define the clear business objectives.
+2. Database Design : I'm gonna define the structure of the database, including tables, columns, and relationships between tables.
+3. Tables Creation : Create tables using the SQL CREATE TABLE statement. Define the table's columns, data types, constraints (e.g., primary keys, foreign keys), and define the relationship between these tables.
+4. Data Insertion : Use the INSERT INTO statement to add data into the created tables, also insert data row by row or in batches.
+5. Business Analysis through Data : Write queries using MySQL and use condidtions and techniques to answer the business questions
+6. Analysis Summary : 
+
+
+Project Specification :
+
+
+Database : store
+Database Management System : MySQL
+Database Management Tool : MySQL Workbench
+
+
+
+1. Define Business Problem & Business Objectives
+
+
+Business Problem: 
+
+´"Over the past month, the small local store has seen a significant increase in total sales revenue, which is a positive sign. 
+However, we are concerned about our net profit margins, which have been relatively decreasing. 
+Additionally, while the average order amount has increased, we want to ensure that this growth is sustainable and not driven by one-time, high-value orders. 
+Furthermore, we need to better understand our customer lifetime value and purchase frequency and balancing te profitability to optimize our marketing and retention strategies. 
+
+How can we maximize net profit margins while encouraging repeat purchases?"
+This business problem centers around the need to analyze and optimize various sales-related metrics to ensure long-term profitability and customer loyalty. 
+It calls for a comprehensive analysis of profit margins and strategies to balance revenue growth with profitability and customer value.
+
+
+
+Business Objectives:
+
+1. Balance Revenue Growth with Profitability: Strike a balance between driving revenue growth and maintaining a healthy level of profitability.
+
+The balance revenue growth with profitability has seem to be a major problem in many business cases. In order to reach the maximum potential of the profit, defining the right analysis with the right metrics is essential 
+for making a great business decision. In this case i will focus on the profit margin, products which has the highest and the lowest profit margin and customer segmentation to seperate them between the high value customer 
+and the low value customer.
+
+2. Encourage Repeat Purchases: Implement initiatives to encourage customers to make repeat purchases and become loyal customers. 
+To encourage customers to order our products repeatedly its a good idea to focus on metric such as Customer Lifetime Value and Purchase Frequency.
+From that we would know how much per customer spend to buy our products, how often they bought our products to estimate in the future how much impact those customers spending into our business healthines
+
+
+
+2. Database design
+
+/* In our smartphone local store we don't have the database to track our business sales history, it's a good idea to make a simple database from scratch for our smartphone local store.
+I'm gonna name it as store database in SQL. The code is right below */
+
+
+CREATE DATABASE IF NOT EXISTS store;
+
+
+-- then i'm gonna use the database i've just created 
+
+
+USE store;
+
+
+
+3. Tables Creation
+
+/* after the database has been created, now is the time to create tables that we need for our database.
+I'm gonna make 3 tables such as sales, customers, products. The code is right below */
+
+
+CREATE TABLE customers (
+    customer_id VARCHAR(10) NOT NULL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    age INT,
+    email VARCHAR(255) UNIQUE
+);
+
+
+CREATE TABLE products (
+    product_id VARCHAR(10) NOT NULL PRIMARY KEY,
+    product_name VARCHAR(255),
+    category VARCHAR(25),
+    conditions VARCHAR(25),
+    storages INT,
+    cost INT
+);
+
+
+CREATE TABLE sales (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_date DATE,
+    customer_id VARCHAR(10) NOT NULL,
+    product_id VARCHAR(10) NOT NULL,
+    price INT DEFAULT 0,
+    quantity INT NOT NULL,
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+FOREIGN KEY (product_id) REFERENCES products(product_id)
+
+);
+
+4. Data Insertion
+
+
+-- Then i'm gonna insert the customers data into customer table
+
+
+INSERT INTO customers (customer_id, first_name, last_name, age, email)
+VALUES
+(101, 'John', 'Doe', 35, 'john.doe@gmail.com'),
+(102, 'Jane', 'Smith', 28, 'jane.smith@gmail.com'),
+(103, 'Michael', 'Johnson', 42, 'michael.johnson@gmail.com'),
+(104, 'Emily', 'Davis', 24, 'emily.davis@gmail.com'),
+(105, 'William', 'Wilson', 31, 'william.wilson@gmail.com'),
+(106, 'Olivia', 'Martinez', 39, 'olivia.martinez@gmail.com'),
+(107, 'James', 'Jones', 45, 'james.jones@gmail.com'),
+(108, 'Sophia', 'Taylor', 27, 'sophia.taylor@gmail.com'),
+(109, 'David', 'Brown', 33, 'david.brown@gmail.com'),
+(110, 'Emma', 'Clark', 30, 'emma.clark@gmail.com');
+
+
+-- And then i'm gonna insert the products data specification into the product table
+
+
+INSERT INTO products (product_id, product_name, category, conditions, storages, cost)
+VALUES
+(201, 'iPhone 13', 'Smartphone', 'New', 128, 699),
+(202, 'Samsung Galaxy S21', 'Smartphone', 'New', 256, 559),
+(203, 'Google Pixel 6', 'Smartphone', 'New', 128, 449),
+(204, 'OnePlus 9 Pro', 'Smartphone', 'New', 256, 599),
+(205, 'Xiaomi Redmi Note 10', 'Smartphone', 'New', 64, 119),
+(206, 'Sony Xperia 5 III', 'Smartphone', 'New', 128, 449),
+(207, 'LG Velvet 5G', 'Smartphone', 'New', 128, 159),
+(208, 'Motorola Moto G Power', 'Smartphone', 'New', 64, 149),
+(209, 'Nokia 8.3 5G', 'Smartphone', 'New', 128, 379),
+(210, 'Asus ROG Phone 5', 'Smartphone', 'New', 256, 579);
+
+
+-- then i'm gonna insert the values into these 3 tables
+
+INSERT INTO sales (order_id, order_date, customer_id, product_id, price, quantity) 
+VALUES
+(1, '2023-01-02', 101, 201, 719, 2),
+(2, '2023-01-02', 106, 201, 719, 1),
+(3, '2023-01-02', 109, 201, 719, 4),
+(4, '2023-01-03', 102, 202, 569, 2),
+(5, '2023-01-03', 104, 202, 569, 5),
+(6, '2023-01-04', 107, 202, 569, 4),
+(7, '2023-01-04', 108, 201, 719, 7),
+(8, '2023-01-04', 101, 201, 719, 2),
+(9, '2023-01-05', 102, 202, 569, 6),
+(10, '2023-01-05', 109, 203, 459, 3),
+(11, '2023-01-05', 110, 201, 719, 4),
+(12, '2023-01-06', 109, 201, 719, 4),
+(13, '2023-01-06', 104, 205, 124, 8),
+(14, '2023-01-06', 105, 210, 599, 3),
+(15, '2023-01-06', 110, 201, 719, 2),
+(16, '2023-01-09', 101, 202, 569, 3),
+(17, '2023-01-09', 102, 201, 719, 4),
+(18, '2023-01-10', 110, 202, 569, 4),
+(19, '2023-01-10', 103, 203, 459, 2),
+(20, '2023-01-10', 104, 204, 559, 2),
+(21, '2023-01-11', 104, 207, 149, 9),
+(22, '2023-01-11', 105, 206, 439, 5),
+(23, '2023-01-11', 107, 201, 719, 2),
+(24, '2023-01-12', 106, 201, 719, 4),
+(25, '2023-01-12', 103, 202, 569, 3),
+(26, '2023-01-12', 104, 202, 569, 6),
+(27, '2023-01-12', 105, 201, 719, 2),
+(28, '2023-01-13', 105, 209, 349, 13),
+(29, '2023-01-13', 108, 208, 119, 12),
+(30, '2023-01-13', 109, 201, 719, 4),
+(31, '2023-01-16', 110, 202, 569, 3),
+(32, '2023-01-16', 110, 201, 719, 3),
+(33, '2023-01-16', 107, 201, 719, 4),
+(34, '2023-01-17', 103, 206, 439, 3),
+(35, '2023-01-17', 102, 206, 439, 2),
+(36, '2023-01-17', 103, 202, 569, 5),
+(37, '2023-01-17', 101, 201, 719, 3),
+(38, '2023-01-18', 101, 201, 719, 3),
+(39, '2023-01-19', 108, 202, 569, 2),
+(40, '2023-01-20', 102, 202, 569, 4),
+(41, '2023-01-23', 104, 201, 719, 7),
+(42, '2023-01-24', 105, 204, 559, 4),
+(43, '2023-01-25', 106, 203, 459, 6),
+(44, '2023-01-26', 104, 207, 149, 9),
+(45, '2023-01-27', 104, 208, 119, 8),
+(46, '2023-01-27', 102, 209, 349, 7),
+(47, '2023-01-30', 104, 201, 719, 4),
+(48, '2023-01-30', 105, 201, 719, 5),
+(49, '2023-01-31', 108, 202, 569, 5),
+(50, '2023-01-31', 109, 202, 569, 5);
+
+
+
+
+5. Business Analysis through Data
+
+-- Profit margin analysis helps a company assess the financial performance of its products or services. 
+It allows you to gauge the profitability of individual products, product categories, or the company as a whole.
+
+SELECT
+    p.product_id,
+    p.product_name,
+    SUM(s.price * s.quantity) AS total_revenue,
+    SUM((s.price - p.cost) * s.quantity) AS total_profit,
+    (SUM((s.price - p.cost) * s.quantity) / SUM(s.price * s.quantity)) * 100 AS profit_margin
+FROM
+    products p
+JOIN
+    sales s ON p.product_id = s.product_id
+GROUP BY
+    p.product_id,
+    p.product_name
+ORDER BY
+    profit_margin DESC;
+
+
+
+-- Now we can focus on the customer segmentation, we would like categorize the customers based on the total spending as high-value customers or low value customers.
+
+SELECT
+    c.customer_id,
+    total_spending,
+    CASE
+        WHEN total_spending > 10000 THEN 'High-Value'
+        ELSE 'Low-Value'
+    END AS customer_segment
+FROM (
+    SELECT
+        c.customer_id,
+	c.first_name,
+	c.last_name,
+        SUM(s.price * s.quantity) AS total_spending
+    FROM sales s
+    JOIN customers c ON c.customer_id = s.customer_id
+    GROUP BY customer_id, c.first_name, c.last_name
+
+) AS spending_summary;
+
+
+
+-- Then we are gonna determine the specific products which has the biggest- and the lowest profit. 
+We are doing this in order to drive more precision business decision and also choosing the right plan to target the specific target market. 
+These are down below to determine the highest and the lowest profit a specific product can make
+
+WITH ProductProfits AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        SUM(s.price * s.quantity) - SUM(s.quantity * p.cost) AS custom_profit_metric
+    FROM
+        sales s
+    INNER JOIN
+        products p ON s.product_id = p.product_id
+    GROUP BY
+        p.product_id, p.product_name)
+
+SELECT
+    product_id,
+    product_name,
+    custom_profit_metric
+FROM
+    ProductProfits
+ORDER BY
+    custom_profit_metric DESC
+LIMIT 1;
+
+
+
+WITH ProductProfits AS (
+    SELECT
+        p.product_id,
+        p.product_name,
+        SUM(s.price * s.quantity) - SUM(s.quantity * p.cost) AS custom_profit_metric
+    FROM
+        sales s
+    INNER JOIN
+        products p ON s.product_id = p.product_id
+    GROUP BY
+        p.product_id, p.product_name)
+
+SELECT
+    product_id,
+    product_name,
+    custom_profit_metric
+FROM
+    ProductProfits
+ORDER BY
+    custom_profit_metric ASC
+LIMIT 1;
+
+
+
+-- Purchase Frequency
+
+SELECT
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    COUNT(s.order_id) AS purchase_frequency
+FROM
+    customers c
+LEFT JOIN
+    sales s ON c.customer_id = s.customer_id
+GROUP BY
+    c.customer_id, c.first_name, c.last_name
+ORDER BY
+    purchase_frequency DESC;
+
+
+-- Customer Lifetime Values
+
+SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    ROUND(AVG(s.price * s.quantity)) AS average_purchase_value,
+    COUNT(s.order_id) AS purchase_frequency,
+    ROUND(SUM(s.price * s.quantity)) AS total_spend
+FROM
+    customers c
+        LEFT JOIN
+    sales s ON c.customer_id = s.customer_id
+GROUP BY c.customer_id , c.first_name , c.last_name
+ORDER BY total_spend DESC, purchase_frequency DESC;
+
+
+
+6. Analysis Summary
+
+Based on our analysis of  revenue growth with probability and encouraging repeat purchases, we have found that our monthly net profit is reaching about $480 and profit margin is declining and reaching the number about -39%. 
+The product with the highest profit on the market is leading by Iphone 13 in total 71 orders and the product with the lowest profit is by Motorolla Moto G Power in total 20 orders. 
+In our analysis of customer data, we found that high-value customers, those with an monthly spend of over $10,000, make up 60% of our customer base (6 of 10) but contribute to 74% of our total revenue. 
+
+
+
+7. Actionable Solution
+
+
+To increase sales products with the lowest profit we can try to sell them by giving them special package and bundling sales to specific related products with specific discount rather than buying things seperately 
+for example iphone 13 with iphone 13 cases and screen protector to save 20% of bundling price. We already know our high and low value customers recently, we can sell more of the highest profitable products to these high value customer 
+by giving  them special offer such as exclusive limited offer buy one get one free. This group is also more likely to make repeat purchases, with quite intense of purchase frequency in a month.
+To further capitalize on this, we recommend implementing targeted marketing strategies to retain and upsell high-value customers, potentially increasing our annual revenue and the profitability as well.
+
+
+
+
+
+
+
+
+
+
+
+
