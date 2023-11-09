@@ -1,0 +1,119 @@
+
+Introduction:
+
+In the age of data-driven decision-making, the quality of data is paramount. Raw data often arrives with missing values, inconsistencies, duplicates, and anomalies that can hinder the accuracy of any analysis. 
+As a data professional, I understand the critical importance of data cleaning and exploratory data analysis (EDA) as foundational steps in the data science workflow.
+
+This project encapsulates my journey in working with a real-world dataset and showcases my expertise in:
+
+- Data Cleaning: I will demonstrate my skills in identifying and addressing data quality issues, ensuring that the dataset is ready for in-depth analysis. 
+Through SQL queries, I will handle missing values, remove duplicates, standardize data, and perform various other data cleaning tasks.
+
+
+The primary goals of this project are to:
+
+Prepare the data for analysis by addressing data quality issues.
+Gain a comprehensive understanding of the dataset through EDA.
+Uncover hidden patterns and trends in the data.
+Provide actionable insights for informed decision-making.
+
+
+By showcasing my expertise in data cleaning , I aim to highlight my proficiency in turning raw data into meaningful insights that drive business decisions. 
+This project is a testament to my analytical skills and the value I bring to any data-driven organization.
+
+
+
+
+DATA CLEANING
+
+
+
+/*Standardize Date Format*/
+
+
+SEELECT order_date 
+FROM sales;
+
+
+SEELECT order_date , CONVERT(order_date, DATE)
+FROM sales;
+
+
+UPDATE sales
+SET order_date = TO_DATE(order_date, 'MM/DD/YYYY');
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/*Find Missing Values and Remove it*/
+
+
+UPDATE sales
+SET quantity = 0
+WHERE quantity IS NULL;
+
+
+DELETE FROM sales
+WHERE quantity IS NULL;
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+/*Find Duplicated Values and Remove it*/
+
+SELECT order_id, COUNT(order_id) as duplicate_count
+FROM sales
+GROUP BY order_id
+HAVING COUNT(order_id) > 1;
+
+
+DELETE FROM sales 
+JOIN orders o2 ON o1.order_id = o2.order_id AND o1.rowid > o2.rowid;
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+/*Breaking out Address into Individual Columns (Address, City, State)*/
+
+ALTER TABLE customers
+ADD address VARCHAR(255);
+
+UPDATE customers
+SET address = CASE
+    WHEN customer_id = '101' THEN '10110 Merdeka 123'
+    WHEN customer_id = '102' THEN '10220 Raya Kebun 45'
+    WHEN customer_id = '103' THEN '10330 Cendrawasih No. 78'
+    WHEN customer_id = '104' THEN '10440 Dahlia 34A'
+    WHEN customer_id = '105' THEN '10550 Bunga Mawar 12'
+    WHEN customer_id = '106' THEN '10660 Kenari 56B'
+    WHEN customer_id = '107' THEN '10770 Pahlawan 87'
+    WHEN customer_id = '108' THEN '10880 Melati 30'
+    WHEN customer_id = '109' THEN '10990 Teratai 5C'
+    WHEN customer_id = '110' THEN '11000 Flamboyan 65'
+    ELSE 'Unknown Address'
+END;
+
+
+SELECT
+SUBSTRING(address, 1, INSTRING(address,' ')) AS zip_code,
+SUBSTRING(address, 7, INSTRING(address,' ')) AS street,
+SUBSTRING(address, INSTRING(address,' ')) AS street_no 
+FROM customers;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
