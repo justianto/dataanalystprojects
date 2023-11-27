@@ -11,7 +11,7 @@ in the complex and big datasets.
 The projects featured in my portfolio illustrate my determination to learn and grow as a data analyst. They include:
 
 ## [SQL Project 1 : Unveiling Business Insights]: 
-Welcome to my SQL analysis project! I embarked on a journey to build an SQL database from scratch, focusing on organizing and managing data efficiently. This project revolves around understanding business needs and using SQL queries to address specific goals.
+I embarked on a journey to build an SQL database from scratch, focusing on organizing and managing data efficiently. This project revolves around understanding business needs and using SQL queries to address specific goals.
 
 My primary aim was to balance revenue growth and profitability while encouraging customer loyalty through repeat purchases. By analyzing various business metrics, I sought actionable insights to drive informed business decisions.
 
