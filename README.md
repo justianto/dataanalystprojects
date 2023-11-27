@@ -17,13 +17,11 @@ My primary aim was to balance revenue growth and profitability while encouraging
 
 Join me as I dive into SQL databases, analyze data, and present findings in a straightforward manner, aiming to provide practical recommendations for enhancing business strategies. This project is all about unveiling insights that can shape smarter, data-driven decisions for business success.
 
-## [SQL Project 2]: 
+## [SQL Project 2 : Data Cleaning]: 
 
-I am excited to share these projects as they illustrate my problem-solving skills, my ability to communicate complex ideas to both technical and non-technical audiences, and my proficiency in a range of data analysis tools 
-and programming languages, including SQL, Spreadsheets, Business Intelligence tools.
+In today's era of data-driven decision-making, the integrity of data stands as the cornerstone. Raw data often arrives with imperfections—missing values, inconsistencies, duplicates, and anomalies—that can compromise the accuracy of analyses. As a data professional, I recognize the pivotal role of data cleaning in the realm of data science workflows.
 
-As you explore my portfolio, I hope you find inspiration and confidence in my capabilities as a data analyst. 
-I look forward to discussing how my skills and experience align with your team's needs and how I can contribute to driving data-driven excellence within your organization.
+This project encapsulates my journey in working with a real-world dataset, showcasing my adeptness in:
 
-Thank you for considering my application, and I look forward to the opportunity to collaborate and contribute to your data-driven success.
+Data Cleaning: Demonstrating proficiency in identifying and rectifying data quality issues, I navigate through the dataset using SQL queries to address missing values, eliminate duplicates, standardize data formats, and conduct various other data cleaning tasks.
 
