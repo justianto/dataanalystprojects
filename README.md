@@ -25,3 +25,43 @@ This project encapsulates my journey in working with a real-world dataset, showc
 
 Data Cleaning: Demonstrating proficiency in identifying and rectifying data quality issues, I navigate through the dataset using SQL queries to address missing values, eliminate duplicates, standardize data formats, and conduct various other data cleaning tasks.
 
+## [Excel Project : Data Cleaning, Data Processing and Data Analyzing]
+
+Subject covered : 
+1. Data Cleaning (include remove extra spaces, non-printing characters, duplicates, blanks, errors, standardizing the right format for the fields and correcting inconsistent values on the fields)
+2. Data Processing (Extract few specific characters, the specific date from date cells, combine the seperated year, month and day into one single consistent date value, joining the two or more values together)
+3. Data Analyzing (Perform data exploration, statistic, functions and formulas)
+4. Pivot Table & Charts
+5. Dashboard 
+6. Insight
+
+
+## [Power BI Project : An Interactive Sales Dashboard]
+
+Subject covered :
+
+1. Data Modelling
+2. Data Transformation with Power Query
+3. Create Measures/Calculations
+4. Dashboard  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
