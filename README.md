@@ -15,11 +15,7 @@ I embarked on a journey to build an SQL database from scratch, focusing on organ
 
 My primary aim was to balance revenue growth and profitability while encouraging customer loyalty through repeat purchases. By analyzing various business metrics, I sought actionable insights to drive informed business decisions.
 
-Join me as I dive into SQL databases, analyze data, and present findings in a straightforward manner, aiming to provide practical recommendations for enhancing business strategies. This project is all about unveiling insights that can shape smarter, data-driven decisions for business success.
-
 ## [SQL Project 2 : Data Cleaning]: 
-
-In today's era of data-driven decision-making, the integrity of data stands as the cornerstone. Raw data often arrives with imperfections—missing values, inconsistencies, duplicates, and anomalies—that can compromise the accuracy of analyses. As a data professional, I recognize the pivotal role of data cleaning in the realm of data science workflows.
 
 This project encapsulates my journey in working with a real-world dataset, showcasing my adeptness in:
 
